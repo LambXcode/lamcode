@@ -71,8 +71,12 @@ from django.http import JsonResponse,HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 import json
 from . import views
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 @csrf_exempt
 def chatbot(request):
     # Check if request is POST
@@ -101,6 +105,7 @@ def gpt3_response(message):
         temperature=temperature,
         n=1,
         stop=None,
+		#api_key=key
         )
     # Extract response from GPT-3 API output
     response_text = response.choices[0].text.strip()

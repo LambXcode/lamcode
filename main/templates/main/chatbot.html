@@ -1,44 +1,71 @@
 {% extends 'main/base.html' %}
 {% block content %}
 <div class="container">
-  {% if response %}
   <div class="card mt-3">
     <div class="card-body">
-      <h5 class="card-title">Bot:</h5>
-      <p class="card-text">{{ response }}</p>
+      {% if response %}
+      <div class="mb-3">
+        <h5 class="card-title">Bot:</h5>
+        <p class="card-text">{{ response }}</p>
+      </div>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {% if not response %}
+        <div class="ask-question">
+          <h1>Ask the bot a question...</h1>
+        </div>
+        {% endif %}
+        <div class="input-group">
+          <label for="message" class="form-label sr-only"></label>
+          <input type="text" name="message" id="message" class="form-control border-0" placeholder="Type your message...">
+          <button type="submit" class="btn btn-primary custom-btn">Send</button>
+        </div>
+      </form>
     </div>
   </div>
-  {% endif %}
-  <form method="post" class="mt-3">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="message">Message:</label>
-      <input type="text" name="message" id="message" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
-  </form>
 </div>
-
 <style>
-    .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 200;
-      margin-bottom: 150px;
-    }
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    margin-bottom: 150px;
+  }
   
-    body {
-      position: relative;
-      min-height: 100vh;
-    }
+  body {
+    position: relative;
+    min-height: 100vh;
+  }
   
-    footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 50px;
-    }
-  </style>
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+  }
+
+  .custom-btn {
+    background-color: #000000; /* set the background color */
+    color: white; /* set the text color */
+    height: 50px;
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  .ask-question {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"]:focus + .ask-question {
+    display: none;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+
+</style>
 {% endblock %}

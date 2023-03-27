@@ -406,8 +406,6 @@ a, .btn {
   border-bottom: 1px solid #E0E0E0;
 }
 
-
-
 .testimonialCol {
   padding-top: 35px;
 }
@@ -490,10 +488,14 @@ body.navToggleActive {
   padding: 50px 0 ;
 }
 .pCol {
-  height: 100px;
-  width: 150px;
+  max-width: 600px;
   position: relative;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 200px;
 }
 .pImg {
   width: 75%;
@@ -502,7 +504,8 @@ body.navToggleActive {
 }
 
 .portfolioRow .pColMain:nth-child(2n-1) .pCol {
-  margin-top: -110px;
+  flex: 1;
+  margin: 10px;
 }
 @media (min-width:576px) {
   .swiper-pagination {
@@ -768,7 +771,7 @@ body.navToggleActive {
 input[type=text], input[type=email], select, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;

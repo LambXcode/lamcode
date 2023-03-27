@@ -168,7 +168,8 @@ Start Content
           <div class="row g-4 align-items-center">
             <div class="col-md-auto">
               <div class="portfolioImgCol">
-                <a href="{% url 'main:portfolio' slug=p.slug %}"><img src="{{p.image.url}}" alt="..."></a>
+                <a href="{% url 'main:portfolio' slug=p.slug %}"><img src="{{p.image.url}}" alt="..." style="w
+                150%;height: 150%;"></a>
               </div>
             </div>
             <div class="col-md">
@@ -251,7 +252,6 @@ Start Content
         </div>
         {% endif %}
         {% endfor %}
-
       </div>
     </div>
   </div>

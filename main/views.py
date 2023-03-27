@@ -95,7 +95,7 @@ def gpt3_response(message):
     # Set up GPT-3 API parameters
     prompt = f"LamUser: {message}\nAI:"
     model_engine = "text-davinci-002"
-    max_tokens = 30
+    max_tokens = 50
     temperature = 0.8
     # Call GPT-3 API
     response = openai.Completion.create(
